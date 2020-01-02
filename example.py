@@ -3,25 +3,24 @@ from glue import Glue, GlueProtocol
 class CustomGlueProtocol(GlueProtocol):
 
     def on_connect(socket, response):
-        print('onConnect callback!')
 
-        socket.sendToMain({'token': 'kek'})
+        print('Connected!')
 
-        product = socket.Channel('product')
-        status = socket.Channel('status')
+        channel = socket.Channel('test')
 
-        product.on_message(socket.on_message_product)
+        channel.on_message(on_message_test)
 
     def on_message(socket, data, channel):
         """
         onMessage for main channel
         """
         print('Received data:', data)
-        socket.sendToMain('this is illegal')
+        socket.sendToMain('Hello world!')
 
-    def on_message_product(self, chan, data):
-        print('Channel: %s' % chan.channel, 'Data: %s' % data)
 
+def on_message_test(chan, data):
+    print('Channel: %s' % chan.channel, 'Data: %s' % data)
+    chan.send(data)
 
 if __name__ == '__main__':
 
