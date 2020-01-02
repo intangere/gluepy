@@ -1,6 +1,5 @@
 # gluepy
-Glue Client for Python
-<hr>
+Glue Client for Python<br>
 Reference: <a href="https://github.com/desertbit/glue">Glue Golang</a>
 <br>
 This is not a complete implementation. It may be finished later on.
